@@ -29,12 +29,12 @@ window.addEventListener('DOMContentLoaded', () => {
     const leafletScript = document.createElement('script');
     leafletScript.src = 'https://unpkg.com/leaflet/dist/leaflet.js';
     leafletScript.onload = () => {
-      const map = L.map('map-container').setView([1.3521, 103.8198], 12); // Singapore
+      const map = L.map('map-container').setView([1.248222, 103.822778], 16); // 1°14'53.6"N 103°49'22.0"E
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap contributors'
       }).addTo(map);
-      L.marker([1.3521, 103.8198]).addTo(map)
-        .bindPopup('Singapore Beach Cleanup')
+      L.marker([1.248222, 103.822778]).addTo(map)
+        .bindPopup('Palawan Beach')
         .openPopup();
     };
     document.body.appendChild(leafletScript);
