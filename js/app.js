@@ -4,38 +4,49 @@ window.addEventListener('DOMContentLoaded', () => {
   const joinBtn = document.getElementById('join-btn');
   if (joinBtn) joinBtn.focus();
 
-  // Placeholder: Load map (to be replaced with real map integration)
-  const mapContainer = document.getElementById('map-container');
-  if (mapContainer) mapContainer.textContent = 'Interactive map coming soon!';
+  // Join form submission
+  const joinForm = document.getElementById('join-form');
+  if (joinForm) {
+    joinForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const date = document.getElementById('event-date').value;
+      alert(`Thanks, ${name}! You’re signed up for the ${date} cleanup. We’ll email you at ${email}.`);
+      joinForm.reset();
+    });
+  }
 
-  // Placeholder: Load weather (to be replaced with real API)
-  const weatherInfo = document.getElementById('weather-info');
-  if (weatherInfo) weatherInfo.textContent = 'Weather data will appear here.';
+  // OpenStreetMap integration with Leaflet.js
+  const mapContainer = document.getElementById('map-container');
+  if (mapContainer) {
+    // Add Leaflet CSS
+    const leafletCSS = document.createElement('link');
+    leafletCSS.rel = 'stylesheet';
+    leafletCSS.href = 'https://unpkg.com/leaflet/dist/leaflet.css';
+    document.head.appendChild(leafletCSS);
+    // Add Leaflet JS
+    const leafletScript = document.createElement('script');
+    leafletScript.src = 'https://unpkg.com/leaflet/dist/leaflet.js';
+    leafletScript.onload = () => {
+      const map = L.map('map-container').setView([34.0195, -118.4912], 13); // Santa Monica Beach
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+      }).addTo(map);
+      L.marker([34.0195, -118.4912]).addTo(map)
+        .bindPopup('Santa Monica Beach Cleanup')
+        .openPopup();
+    };
+    document.body.appendChild(leafletScript);
+  }
+
+  // Hardcoded weather already in HTML
 
   // Placeholder: Load events
   const eventList = document.getElementById('event-list');
   if (eventList) {
     eventList.innerHTML = '<li>World Oceans Day Cleanup - June 8</li><li>Sunset Beach Sweep - June 15</li>';
   }
-
-  // Join button interaction
-  if (joinBtn) {
-    joinBtn.addEventListener('click', () => {
-      alert('Thanks for joining! We’ll notify you about upcoming cleanups.');
-    });
-  }
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-  // Join button interaction
-  const joinBtn = document.getElementById('join-btn');
-  joinBtn.addEventListener('click', () => {
-    alert('Thanks for joining! Stay tuned for upcoming cleanups.');
-  });
-
-  // Placeholder: Load map and weather data
-  document.getElementById('map-container').textContent = 'Interactive map coming soon!';
-  document.getElementById('weather-info').textContent = 'Weather data will appear here.';
 
   // Accessibility: Focus management for navigation
   const navLinks = document.querySelectorAll('nav a');
