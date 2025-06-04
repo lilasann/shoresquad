@@ -98,6 +98,33 @@ section {
   padding: 0;
 }
 
+#weather-info {
+  background: linear-gradient(135deg, var(--ocean-blue) 60%, var(--seafoam-green) 100%);
+  color: var(--clean-white);
+  border-radius: 12px;
+  padding: 1.5rem 1rem;
+  font-size: 1.2rem;
+  box-shadow: 0 2px 8px rgba(33,150,243,0.10);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  min-width: 220px;
+}
+
+#weather-info strong {
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+#weather-info .weather-icon {
+  font-size: 2.2rem;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
 #event-list {
   list-style: none;
   padding: 0;
@@ -170,5 +197,12 @@ footer {
   }
   section {
     padding: 0.5rem;
+  }
+  #weather-info {
+    font-size: 1rem;
+    padding: 1rem 0.5rem;
+  }
+  #weather-info strong {
+    font-size: 1.1rem;
   }
 }
