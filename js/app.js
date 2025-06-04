@@ -29,12 +29,12 @@ window.addEventListener('DOMContentLoaded', () => {
     const leafletScript = document.createElement('script');
     leafletScript.src = 'https://unpkg.com/leaflet/dist/leaflet.js';
     leafletScript.onload = () => {
-      const map = L.map('map-container').setView([34.0195, -118.4912], 13); // Santa Monica Beach
+      const map = L.map('map-container').setView([1.3521, 103.8198], 12); // Singapore
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap contributors'
       }).addTo(map);
-      L.marker([34.0195, -118.4912]).addTo(map)
-        .bindPopup('Santa Monica Beach Cleanup')
+      L.marker([1.3521, 103.8198]).addTo(map)
+        .bindPopup('Singapore Beach Cleanup')
         .openPopup();
     };
     document.body.appendChild(leafletScript);
